@@ -10,3 +10,5 @@ HIGHEST POSSIBLE SCORE = 100
 
 sort scores(unsorted scores, HIGHEST POSSIBLE SCORE)
 Returns [91, 89, 65, 53, 41, 37]
+
+#### Don't use .sort.reverse ... genius. You have to implement it.
