@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require '../../spec/spec_helper.rb'
+require './spec_helper.rb'
 require '../main'
 
 describe 'merge_meetings' do
