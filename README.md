@@ -5,7 +5,9 @@
 ### A collection of Algorithms
 
 Algorithms collected and attempted from various sources.
-Specs written by @nachiket87
+Specs written by nachiket87 (yours truly)
+
+#### Run Rake in problem folder to test style and run Rspec
 
 requires Ruby 2.7 and Rspec
 
