@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require 'pry'
+
 def merge_meetings(meetings)
   # Sort by start time.
   sorted_meetings = meetings.sort
   # Initialize merged_meetings with the earliest meeting.
-  return meetings if sorted_meetings[0].class != Array #if input is just an array
+  return meetings if sorted_meetings[0].class != Array # if input is just an array
 
   merged_meetings = [sorted_meetings[0]]
 
