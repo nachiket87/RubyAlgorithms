@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'set'
 
 def can_two_movies_fill_flight_test?(movie_lengths, flight_length)
@@ -8,14 +9,11 @@ def can_two_movies_fill_flight_test?(movie_lengths, flight_length)
   false
 end
 
-
 def can_two_movies_fill_flight?(movie_lengths, flight_length)
-
   # Movie lengths we've seen so far.
   movie_lengths_seen = Set.new
 
   movie_lengths.any? do |first_movie_length|
-
     matching_second_movie_length = flight_length - first_movie_length
 
     if movie_lengths_seen.include?(matching_second_movie_length)

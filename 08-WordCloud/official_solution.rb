@@ -1,10 +1,11 @@
-  class WordCloudData
+# frozen_string_literal: true
 
+class WordCloudData
   attr_accessor :words_to_counts
 
   def initialize(input_string)
     @words_to_counts = {}
-    self.populate_words_to_counts(input_string)
+    populate_words_to_counts(input_string)
   end
 
   def populate_words_to_counts(input_string)
@@ -15,68 +16,58 @@
     current_word_length = 0
 
     input_string.each_char.with_index do |character, index|
-
       # If we reached the end of the string we check if the last
       # character is a letter and add the last word to our hash.
       if index == input_string.length - 1
-        if self.letter?(character)
-          current_word_length += 1
-        end
-        if current_word_length > 0
+        current_word_length += 1 if letter?(character)
+        if current_word_length.positive?
           current_word = input_string.slice(current_word_start_index,
-            current_word_length)
-          self.add_word_to_hash(current_word)
+                                            current_word_length)
+          add_word_to_hash(current_word)
         end
 
       # If we reach a space or emdash we know we're at the end of a word,
       # so we add it to our hash and reset our current word.
-      elsif character == ' ' || character == "\u2014"
-        if current_word_length > 0
+      elsif [' ', "\u2014"].include?(character)
+        if current_word_length.positive?
           current_word = input_string.slice(current_word_start_index,
-            current_word_length)
-          self.add_word_to_hash(current_word)
+                                            current_word_length)
+          add_word_to_hash(current_word)
           current_word_length = 0
         end
 
       # We want to make sure we split on ellipses so if we get two periods in
       # a row we add the current word to our hash and reset our current word.
       elsif character == '.'
-        if index < input_string.length - 1 && input_string[index + 1] == '.'
-          if current_word_length > 0
-            current_word = input_string.slice(current_word_start_index,
-              current_word_length)
-            self.add_word_to_hash(current_word)
-            current_word_length = 0
-          end
+        if index < input_string.length - 1 && input_string[index + 1] == '.' && current_word_length.positive?
+          current_word = input_string.slice(current_word_start_index,
+                                            current_word_length)
+          add_word_to_hash(current_word)
+          current_word_length = 0
         end
 
       # If the character is a letter or an apostrophe, we add it to our current word.
-      elsif self.letter?(character) || character == '\''
-        if current_word_length == 0
-          current_word_start_index = index
-        end
+      elsif letter?(character) || character == '\''
+        current_word_start_index = index if current_word_length.zero?
         current_word_length += 1
 
       # If the character is a hyphen, we want to check if it's surrounded by letters.
       # If it is, we add it to our current word.
       elsif character == '-'
-        if index > 0 && self.letter?(input_string[index - 1]) &&
-           self.letter?(input_string[index + 1])
+        if index.positive? && letter?(input_string[index - 1]) &&
+           letter?(input_string[index + 1])
           current_word_length += 1
-        else
-          if current_word_length > 0
-            current_word = input_string.slice(current_word_start_index,
-              current_word_length)
-            self.add_word_to_hash(current_word)
-            current_word_length = 0
-          end
+        elsif current_word_length.positive?
+          current_word = input_string.slice(current_word_start_index,
+                                            current_word_length)
+          add_word_to_hash(current_word)
+          current_word_length = 0
         end
       end
     end
   end
 
   def add_word_to_hash(word)
-
     # If the word is already in the hash we increment its count.
     if @words_to_counts.include? word
       @words_to_counts[word] += 1

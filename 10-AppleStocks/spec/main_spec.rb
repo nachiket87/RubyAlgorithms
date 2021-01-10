@@ -1,9 +1,10 @@
-require './spec_helper.rb'
+# frozen_string_literal: true
 
-require '../main.rb'
+require './spec_helper'
+
+require '../main'
 
 describe 'get_max_profit' do
-
   it 'should consider price going up and then down' do
     expect(get_max_profit([1, 5, 3, 2])).to eq(4)
   end
@@ -25,7 +26,6 @@ describe 'get_max_profit' do
   end
 
   it 'should raise error if empty array provided' do
-    expect { get_max_profit([]) }.to raise_error 
+    expect { get_max_profit([]) }.to raise_error
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def order_checker(take_out_orders, dine_in_orders, served_orders)
   take_out_index = 0
   dine_in_index = 0
@@ -13,5 +15,5 @@ def order_checker(take_out_orders, dine_in_orders, served_orders)
     end
   end
 
-  return true
+  true
 end

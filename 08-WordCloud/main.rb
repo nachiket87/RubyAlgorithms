@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 def word_cloud(string)
-  keys = string.split(" ")
+  keys = string.split(' ')
   answer = {}
   keys.each do |key|
     if answer[key].nil?
@@ -8,8 +10,6 @@ def word_cloud(string)
       answer[key] += 1
     end
   end
-  
 
-  return answer
+  answer
 end
-

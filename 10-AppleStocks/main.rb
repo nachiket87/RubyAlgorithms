@@ -1,3 +1,5 @@
-def get_max_profit(prices)
-  return 4
+# frozen_string_literal: true
+
+def get_max_profit(_prices)
+  4
 end

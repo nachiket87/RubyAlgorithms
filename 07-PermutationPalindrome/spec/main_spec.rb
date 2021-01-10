@@ -1,9 +1,11 @@
-require './spec_helper.rb'
-require '../main.rb'
+# frozen_string_literal: true
+
+require './spec_helper'
+require '../main'
 
 describe 'Method is_palindrome?' do
   it 'should accept a string string as argument' do
-    expect { is_palindrome?('a','b') }.to raise_error(ArgumentError)
+    expect { is_palindrome?('a', 'b') }.to raise_error(ArgumentError)
   end
   it "should return true for 'civic'" do
     expect(is_palindrome?('civic')).to eq(true)
@@ -18,5 +20,3 @@ describe 'Method is_palindrome?' do
     expect(is_palindrome?('livci')).to eq(false)
   end
 end
-
-

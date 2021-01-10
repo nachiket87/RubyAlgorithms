@@ -1,5 +1,7 @@
-require './spec_helper.rb'
-require '../main.rb'
+# frozen_string_literal: true
+
+require './spec_helper'
+require '../main'
 
 describe 'two stacks for enqueue and dequeue' do
   it 'should return last value enqueued' do

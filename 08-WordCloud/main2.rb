@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WordCloudData
   attr_reader :words_to_counts
 
@@ -11,12 +13,11 @@ class WordCloudData
   def split_words
     keys = @input_string.split(/[^\w'-]/)
     keys.each do |key|
-      if @words_to_counts[key].nil? 
-        @words_to_counts[key] = 1 unless key == ""
+      if @words_to_counts[key].nil?
+        @words_to_counts[key] = 1 unless key == ''
       else
-        @words_to_counts[key] += 1 unless key == ""
+        @words_to_counts[key] += 1 unless key == ''
       end
     end
   end
 end
-
